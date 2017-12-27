@@ -1,24 +1,47 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-
 import { Actions, Scene, Router } from 'react-native-router-flux';
+
+// ----- Components ----- //
 import CharactersList from './sections/characters/CharactersList';
+
+// ----- Webservice ----- //
+import * as webservices from 'reactMarvel/src/webservices/webservices'
+
+// ----- Redux ----- //
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { Provider, connect } from 'react-redux'
+import thunk from 'redux-thunk'
+import * as reducers from './redux/reducers'
+
+
+const reducer = combineReducers(reducers)
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk)
+)
 
 
 export default class App extends Component{
+
+    componentWillMount(){
+        webservices.configureAxios()
+    }
 
     
 
     render(){
         return(
-            <Router>
-                <Scene key="root">
-                    <Scene
-                        key={'CharactersList'}
-                        component={CharactersList}
-                    />
-                </Scene>
-            </Router>
+            <Provider store={store}>
+                <Router>
+                    <Scene key="root">
+                        <Scene
+                            key={'CharactersList'}
+                            component={CharactersList}
+                        />
+                    </Scene>
+                </Router>
+            </Provider>
         )
     }
 }

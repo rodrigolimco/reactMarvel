@@ -3,37 +3,29 @@ import {Text, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
 import * as webservices from 'reactMarvel/src/webservices/webservices'
 import * as constants from 'reactMarvel/src/webservices/constants'
 import axios from 'axios'
+import { Actions } from 'react-native-router-flux';
 
-export default class CharactersList extends Component {
+import { connect } from 'react-redux'
+import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
 
-    constructor(props){
-        super(props)
-        this.state = {
-            list: [],
-        }
-    }
+
+class CharactersList extends Component {
 
     componentWillMount(){
-        //const fetchURL = constants.CHARACTERS + constants.API_KEY
-        console.log("RODRIGO")
+        this.props.fetchCharactersList()
+    }
 
-        axios.get('http://gateway.marvel.com/v1/public/characters?ts=1&apikey=b7bbda53f9042d5d027904cbc0a62475&hash=a99e2ab57a422448df484a43d84a9229')
-        .then((response) => {
-          console.log("axios get response: ", response);
-          const personajes = response.data && response.data.data.results ? response.data.data.results : []
-          this.setState({ list : personajes })
-        })
-        .catch((error) => {
-            console.log("axios get error: ", error);
-        });
+    onSelect(item){
 
     }
 
     printCharacter(item, index){
         return (
-            <View style={{height: 200, backgroundColor: 'grey', marginVertical: 10}}>
-                <Text>{ item.name }</Text>
-            </View>
+            <TouchableOpacity>
+                <View style={{height: 200, backgroundColor: 'grey', marginVertical: 10}}>
+                    <Text>{ item.name }</Text>
+                </View>
+            </TouchableOpacity>
         )
     }
 
@@ -41,14 +33,35 @@ export default class CharactersList extends Component {
         return(
             <View>
                 <FlatList
-                    data={ this.state.list }
+                    data={ this.props.list }
                     renderItem={ ({ item, index }) => this.printCharacter(item, index)}
-                    keyExtractor= {(item, index) => index}
-                    //extraData     = {this.props}
+                    keyExtractor={ (item, index) => item.id}
+                    extraData={ this.state }
                 />
             </View>
         )
     }
-
 }
 
+
+const mapStateToProps = (state) => {
+    return{
+        list        : state.characters.list,
+        character   : state.characters.character
+    }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+    return{
+
+        fetchCharactersList: () => {
+            dispatch(CharactersActions.fetchCharactersList())
+        },
+
+        updateCharacterSelected: (character) => {
+            dispatch(CharactersActions.updateCharacterSelected(character))
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CharactersList)

@@ -3,7 +3,7 @@ import * as constants from './constants'
 
 export function configureAxios(){
     axios.defaults.baseURL = constants.BASE_URL;
-    axios.defaults.headers.common['Authorization'] = constants.API_KEY
+    //axios.defaults.headers.common['Authorization'] = constants.API_KEY
     axios.defaults.headers.post['Content-Type'] = 'application/json';
 }
 
