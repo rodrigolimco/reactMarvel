@@ -4,6 +4,7 @@ import { Actions, Scene, Router } from 'react-native-router-flux';
 
 // ----- Components ----- //
 import CharactersList from './sections/characters/CharactersList';
+import CharacterView from './sections/characters/CharacterView';
 
 // ----- Webservice ----- //
 import * as webservices from 'reactMarvel/src/webservices/webservices'
@@ -35,10 +36,17 @@ export default class App extends Component{
             <Provider store={store}>
                 <Router>
                     <Scene key="root">
+                        
                         <Scene
                             key={'CharactersList'}
                             component={CharactersList}
                         />
+
+                        <Scene
+                            key={'CharacterView'}
+                            component={CharacterView}
+                        />
+
                     </Scene>
                 </Router>
             </Provider>

@@ -11,17 +11,22 @@ import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
 
 class CharactersList extends Component {
 
+    constructor(props){
+        super(props)
+        this.printCharacter = this.printCharacter.bind(this)
+    }
+
     componentWillMount(){
         this.props.fetchCharactersList()
     }
 
     onSelect(item){
-
+        this.props.updateCharacterSelected(item)
     }
 
     printCharacter(item, index){
         return (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={ (item) => this.onSelect(item) }>
                 <View style={{height: 200, backgroundColor: 'grey', marginVertical: 10}}>
                     <Text>{ item.name }</Text>
                 </View>
@@ -57,9 +62,11 @@ const mapDispatchToProps = (dispatch, props) => {
         fetchCharactersList: () => {
             dispatch(CharactersActions.fetchCharactersList())
         },
-
+        
         updateCharacterSelected: (character) => {
+            console.log("CHARACTER RODRIGO: ", character)
             dispatch(CharactersActions.updateCharacterSelected(character))
+            Actions.CharacterView({ title: character.name })
         },
     }
 }
