@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Text, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
+import {Text, View, StyleSheet, TouchableOpacity, FlatList, Dimensions, Image } from 'react-native'
 import * as webservices from 'reactMarvel/src/webservices/webservices'
 import * as constants from 'reactMarvel/src/webservices/constants'
 import axios from 'axios'
@@ -25,9 +25,11 @@ class CharactersList extends Component {
     }
 
     printCharacter(item, index){
+        const image = item && item.thumbnail ? { uri: item.thumbnail.path + '/landscape_amazing.jpg' } : null
         return (
-            <TouchableOpacity onPress={ (item) => this.onSelect(item) }>
+            <TouchableOpacity onPress={ () => this.onSelect(item) }>
                 <View style={{height: 200, backgroundColor: 'grey', marginVertical: 10}}>
+                    <Image source={image} style={styles.image} resizeMode={'contain'} />
                     <Text>{ item.name }</Text>
                 </View>
             </TouchableOpacity>
@@ -72,3 +74,10 @@ const mapDispatchToProps = (dispatch, props) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharactersList)
+
+const styles = StyleSheet.create({
+    image: {
+        width: Dimensions.get('window').width,
+        height: 200,
+    },
+});

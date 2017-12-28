@@ -40,6 +40,7 @@ export default class App extends Component{
                         <Scene
                             key={'CharactersList'}
                             component={CharactersList}
+                            title={'ReactMarvel'}
                         />
 
                         <Scene

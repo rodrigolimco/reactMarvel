@@ -19,7 +19,7 @@ export default function reducer( state = initialState, action = {}){
         case types.CHARACTERS_UPDATE_CHARACTER:
             return{
                 ...state,
-                character: action.value
+                character: action.character
             };
 
         case types.CHARACTERS_SET_FETCHING:
