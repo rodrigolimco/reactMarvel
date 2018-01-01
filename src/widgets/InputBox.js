@@ -1,21 +1,11 @@
 import React, { Component } from 'react'
 import { Text, View, Image, Button, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
-import ImagePicker from 'react-native-image-picker'
 
-class AddCharacter extends Component {
-    
+export default class InputBox extends Component {
+
     render(){
         return(
             <View>
-
-                <View>
-                    <Image source={imageURI} style={} resizeMode={ 'cover' }/>
-                    <TouchableOpacity style={} onPress={} >
-                        <Text>{ 'Select image' }</Text>
-                    </TouchableOpacity>
-                </View>
-
-                <View>
                     <Text>{ 'Character name'}</Text>
                     <TextInput
                         value                   = { '' }
@@ -26,13 +16,9 @@ class AddCharacter extends Component {
                         underlineColorAndroid   = { 'transparent' }
                     />
                 </View>
-
-                <View>
-                    <TextInput
-                    />
-                </View>
-
-            </View>
         )
     }
+
+
+
 }
