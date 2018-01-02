@@ -27,6 +27,13 @@ export function updateCharacterSelected(character) {
     }
 }
 
+export function updateMyCharactersList(character){
+    return {
+        type: types.CHARACTERS_UPDATE_MYLIST,
+        character
+    }
+}
+
 
 export function fetchCharactersList() {
     return (dispatch, getState) => {

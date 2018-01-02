@@ -3,6 +3,7 @@ import * as types from '../types/characters'
 const initialState = {
     isFetching: false,
     list: [],
+    myList: [],
     character: null
 }
 
@@ -26,6 +27,12 @@ export default function reducer( state = initialState, action = {}){
         return{
             ...state,
             isFetching: action.value
+        };
+
+        case types.CHARACTERS_UPDATE_MYLIST:
+        return{
+            ...state,
+            myList: action.value
         };
 
         default:
