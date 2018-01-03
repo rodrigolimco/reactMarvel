@@ -13,14 +13,22 @@ class CharactersList extends Component {
     constructor(props){
         super(props)
         this.printCharacter = this.printCharacter.bind(this)
+        this.onEndReached = this.onEndReached.bind(this)
     }
 
     componentWillMount(){
-        this.props.fetchCharactersList()
+        this.props.initCharacterList()
     }
 
     onSelect(item){
         this.props.updateCharacterSelected(item)
+    }
+
+    onEndReached(){
+        if(this.props.list.length < this.props.total && !this.props.isFetching) {
+            let newOffset = this.props.offset + 20
+            this.props.fetchCharactersList(newOffset)
+        }
     }
 
     printCharacter(item, index){
@@ -39,10 +47,11 @@ class CharactersList extends Component {
         return(
             <View style={styles.container}>
                 <FlatList
-                    data={ this.props.list }
-                    renderItem={ ({ item, index }) => this.printCharacter(item, index)}
-                    keyExtractor={ (item, index) => item.id}
-                    extraData={ this.state }
+                    data            ={ this.props.list }
+                    renderItem      ={ ({ item, index }) => this.printCharacter(item, index)}
+                    onEndReached    ={() => this.onEndReached()}
+                    keyExtractor    ={ (item, index) => item.id}
+                    extraData       ={ this.props }
                 />
             </View>
         )
@@ -54,14 +63,22 @@ const mapStateToProps = (state) => {
     return{
         list        : state.characters.list,
         character   : state.characters.character,
-        myList      : state.characters.myList
+        myList      : state.characters.myList,
+        total       : state.characters.total,
+        isFetching  : state.characters.isFetching,
+        offset      : state.characters.offset
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return{
 
-        fetchCharactersList: () => {
+        initCharacterList: () => {
+            dispatch(CharactersActions.initCharacterList())
+        },
+
+        fetchCharactersList: (offset) => {
+            dispatch(CharactersActions.updateCharactersListOffset(offset))
             dispatch(CharactersActions.fetchCharactersList())
         },
         

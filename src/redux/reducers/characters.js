@@ -19,7 +19,14 @@ export default function reducer( state = initialState, action = {}){
                 list: action.list,
                 total: action.total
             };
-        
+
+        case types.CHARACTERS_UPDATE_LIST_OFFSET:
+        return{
+            ...state,
+            offset: action.value
+        };
+
+
         case types.CHARACTERS_UPDATE_CHARACTER:
             return{
                 ...state,
