@@ -34,8 +34,8 @@ export default class App extends Component {
 
     renderAddCharacterButton() {
         return (
-            <TouchableOpacity style={AppStyle.styles.addButton} onPress={() => Actions.CharacterNew()}>
-                <Text style={AppStyle.styles.addButtonText}>{'Add'}</Text>
+            <TouchableOpacity style={styles.addButton} onPress={() => Actions.CharacterNew()}>
+                <Text style={styles.addButtonText}>{'Add'}</Text>
             </TouchableOpacity>
         )
     }
@@ -72,3 +72,22 @@ export default class App extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    navBar: {
+      backgroundColor: 'rgb(245,245,245)',
+    },
+  
+    addButtonText: {
+      color: 'white',
+      fontSize: 16,
+      fontWeight: '600'
+  
+    },
+  
+    addButton: {
+      padding: 10,
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  });

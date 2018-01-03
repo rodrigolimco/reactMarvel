@@ -19,10 +19,32 @@ export default class Button extends Component{
 
     render(){
         return(
-            <TouchableOpacity style={ButtonStyle.styles.container} onPress={ () => this._onPress()}>
-                <Text style={ButtonStyle.styles.label}>{ this.props.label }</Text>
-                { this.props.isFetching ? <ActivityIndicator animating color={this.props.spinnerColor} style={ButtonStyle.styles.spinner}/> : null }
+            <TouchableOpacity style={styles.container} onPress={ () => this._onPress()}>
+                <Text style={styles.label}>{ this.props.label }</Text>
+                { this.props.isFetching ? <ActivityIndicator animating color={this.props.spinnerColor} style={styles.spinner}/> : null }
             </TouchableOpacity>
         )
     }
 }
+
+const styles = StyleSheet.create({
+
+    container: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+        backgroundColor: 'grey',
+        borderRadius: 4,
+        flexDirection: 'row',
+    },
+
+    label: {
+        color: 'white',
+        fontWeight: '600',
+        fontSize: 16,
+    },
+
+    spinner: {
+        marginLeft: 20,
+    }
+})

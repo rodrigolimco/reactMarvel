@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, Image, TouchableOpacity } from 'react-native'
+import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import ImagePicker from 'react-native-image-picker'
+import { Actions } from 'react-native-router-flux';
 
 import { Button, InputBox } from 'reactMarvel/src/widgets'
 import { CharacterNewStyle } from 'reactMarvel/src/styles'
@@ -37,11 +38,13 @@ class CharacterNew extends Component {
 
     onSubmit(){
         if( this.validateForm() ){
-            const characterData = {
-                nombre: this.state.name,
+            const character = {
+                name: this.state.name,
                 image: this.state.image ? 'data:image/jpeg; base 64,' +this.state.image.data : null,
             }
-            this.props.updateMyCharactersList(characterData)
+
+            console.log("NUEVO HEROE: ", character)
+            this.props.updateMyCharactersList(character)
         }
     }
 
@@ -80,16 +83,16 @@ class CharacterNew extends Component {
         const imageButtonText = this.state.image ? this.state.image.fileName : 'Choose image'
 
         return(
-            <View style={CharacterNewStyle.styles.container}>
+            <View style={styles.container}>
 
-                <View style={CharacterNewStyle.styles.imageContainer}>
-                    <Image source={imageUri} style={CharacterNewStyle.styles.imageContainerBackground} resizeMode={'cover'}/>
-                    <TouchableOpacity style={CharacterNewStyle.styles.button} onPress={ () => this.onSelectImage() }>
-                        <Text style={CharacterNewStyle.styles.textButton}>{ imageButtonText }</Text>
+                <View style={styles.imageContainer}>
+                    <Image source={imageUri} style={styles.imageContainerBackground} resizeMode={'cover'}/>
+                    <TouchableOpacity style={styles.button} onPress={ () => this.onSelectImage() }>
+                        <Text style={styles.textButton}>{ imageButtonText }</Text>
                     </TouchableOpacity>
                 </View>
 
-                <View styles={CharacterNewStyle.styles.inputContainer}>
+                <View style={styles.inputContainer}>
                     <InputBox
                         onChangeText   = { (v) => this.setState({ name : v }) }
                         value           = { this.state.name }
@@ -99,7 +102,7 @@ class CharacterNew extends Component {
                     />
                 </View>
 
-                <View style={CharacterNewStyle.styles.buttonContainer}>
+                <View style={styles.buttonContainer}>
                     <Button
                         label = { 'Save' }
                         onPress = { () => this.onSubmit() }
@@ -122,8 +125,52 @@ const mapDispatchToProps = (dispatch, props) => {
     return{
         updateMyCharactersList: (character) => {
             dispatch(CharactersActions.updateMyCharactersList(character))
+            Actions.pop()
         }
     }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharacterNew)
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'rgb(245,245,245)',
+    },
+
+    imageContainer: {
+        alignItems: 'center',
+        width: '100%',
+        height: 200,
+        backgroundColor: 'transparent',
+        justifyContent: 'center'
+    },
+
+    imageContainerBackground: {
+        position: 'absolute',
+        top: 0, 
+        bottom: 0,
+        left: 0, 
+        right: 0
+    },
+
+    button: {
+        padding: 10,
+        borderColor: 'white',
+        borderWidth: 1, 
+        borderRadius: 6
+    },
+
+    textButton: {
+        color: 'white',
+        fontWeight: '600',
+    },
+
+    inputContainer: {
+        margin: 20,
+    },
+
+    buttonContainer: {
+        margin: 20,
+    },
+})

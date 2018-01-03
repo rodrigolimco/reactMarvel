@@ -17,6 +17,7 @@ class CharactersList extends Component {
 
     componentWillMount(){
         this.props.fetchCharactersList()
+        console.log("MYLIST RODRIGO: ", this.props.myList)
     }
 
     onSelect(item){
@@ -53,7 +54,8 @@ class CharactersList extends Component {
 const mapStateToProps = (state) => {
     return{
         list        : state.characters.list,
-        character   : state.characters.character
+        character   : state.characters.character,
+        myList      : state.characters.myList
     }
 }
 
@@ -65,7 +67,6 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         
         updateCharacterSelected: (character) => {
-            console.log("CHARACTER RODRIGO: ", character)
             dispatch(CharactersActions.updateCharacterSelected(character))
             Actions.CharacterView({ title: character.name })
         },

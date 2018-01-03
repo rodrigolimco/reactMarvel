@@ -11,10 +11,10 @@ function updateCharactersList(list) {
     }
 }
 
-function updateMyCreatedList(list) { 
+function updateMyCreatedList(newList) { 
     return {
         type: types.CHARACTERS_UPDATE_MYLIST,
-        myList: list,
+        myList: newList,
     }
 }
 
@@ -40,7 +40,8 @@ export function updateMyCharactersList(character){
         const state = getState()
         const myList = state.characters.myList
 
-        const newList = [...myList, ...character]
+        const newList = [...myList, character]
+        console.log("MYLIST RODRIGO:", newList)
         dispatch(updateMyCreatedList(newList))
     }
 }
