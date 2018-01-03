@@ -4,7 +4,9 @@ const initialState = {
     isFetching: false,
     list: [],
     myList: [],
-    character: null
+    character: null,
+    total: 0,
+    offset: 0
 }
 
 export default function reducer( state = initialState, action = {}){
@@ -15,6 +17,7 @@ export default function reducer( state = initialState, action = {}){
             return{
                 ...state,
                 list: action.list,
+                total: action.total
             };
         
         case types.CHARACTERS_UPDATE_CHARACTER:
