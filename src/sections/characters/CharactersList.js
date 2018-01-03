@@ -17,7 +17,6 @@ class CharactersList extends Component {
 
     componentWillMount(){
         this.props.fetchCharactersList()
-        console.log("MYLIST RODRIGO: ", this.props.myList)
     }
 
     onSelect(item){
@@ -38,7 +37,7 @@ class CharactersList extends Component {
 
     render(){
         return(
-            <View>
+            <View style={styles.container}>
                 <FlatList
                     data={ this.props.list }
                     renderItem={ ({ item, index }) => this.printCharacter(item, index)}
@@ -76,6 +75,14 @@ const mapDispatchToProps = (dispatch, props) => {
 export default connect(mapStateToProps, mapDispatchToProps)(CharactersList)
 
 const styles = StyleSheet.create({
+
+    container: {
+        flex: 1,
+        //backgroundColor: Colors.background,
+        paddingBottom: 20,
+        paddingTop: 60
+    },
+
     image: {
         width: Dimensions.get('window').width,
         height: 200,

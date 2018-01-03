@@ -16,7 +16,8 @@ class CharacterNew extends Component {
             name: '',
             nameError: '',
 
-            image: null
+            image: null,
+            imageError: ''
         }
     }
 
@@ -29,8 +30,14 @@ class CharacterNew extends Component {
             valid = false
         }
 
+        if(this.state.image == null){
+            errors.image = "Please choose an image"
+            valid = false
+        }
+
         this.setState({ 
             nameError: errors.name ? errors.name : '',
+            imageError: errors.image ? errors.image : ''
         })
 
         return valid
@@ -43,7 +50,6 @@ class CharacterNew extends Component {
                 image: this.state.image ? 'data:image/jpeg; base 64,' +this.state.image.data : null,
             }
 
-            console.log("NUEVO HEROE: ", character)
             this.props.updateMyCharactersList(character)
         }
     }
@@ -92,6 +98,8 @@ class CharacterNew extends Component {
                     </TouchableOpacity>
                 </View>
 
+                {this.state.imageError ? <Text style={styles.error}>{this.state.imageError}</Text> : null}
+
                 <View style={styles.inputContainer}>
                     <InputBox
                         onChangeText   = { (v) => this.setState({ name : v }) }
@@ -136,6 +144,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'rgb(245,245,245)',
+    },
+
+    error: {
+        color: 'white',
+        textAlign: 'right',
+        marginTop: 4,
     },
 
     imageContainer: {

@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Actions, Scene, Router } from 'react-native-router-flux';
+import React, { Component } from 'react'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { Actions, Scene, Router } from 'react-native-router-flux'
 
 import { AppStyle } from 'reactMarvel/src/styles'
 
 // ----- Components ----- //
-import CharactersList from './sections/characters/CharactersList';
-import CharacterView from './sections/characters/CharacterView';
-import CharacterNew from './sections/characters/CharacterNew';
+import EndpointsList from './sections/endpoints/EndpointsList'
+import CharactersList from './sections/characters/CharactersList'
+import CharacterView from './sections/characters/CharacterView'
+import CharacterNew from './sections/characters/CharacterNew'
 
 // ----- Webservice ----- //
 import * as webservices from 'reactMarvel/src/webservices/webservices'
@@ -49,6 +50,12 @@ export default class App extends Component {
                     <Scene key="root">
 
                         <Scene
+                            key={'EndpointsList'}
+                            component={EndpointsList}
+                            title={'ReactMarvel'}
+                        />
+
+                        <Scene
                             key={'CharactersList'}
                             component={CharactersList}
                             title={'ReactMarvel'}
@@ -75,19 +82,19 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
     navBar: {
-      backgroundColor: 'rgb(245,245,245)',
+        backgroundColor: 'rgb(245,245,245)',
     },
-  
+
     addButtonText: {
-      color: 'white',
-      fontSize: 16,
-      fontWeight: '600'
-  
+        color: 'white',
+        fontSize: 16,
+        fontWeight: '600'
+
     },
-  
+
     addButton: {
-      padding: 10,
-      alignItems: 'center',
-      justifyContent: 'center'
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
-  });
+});
