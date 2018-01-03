@@ -32,7 +32,7 @@ export default function reducer( state = initialState, action = {}){
         case types.CHARACTERS_UPDATE_MYLIST:
         return{
             ...state,
-            myList: action.value
+            myList: action.list
         };
 
         default:

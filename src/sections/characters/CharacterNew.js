@@ -5,6 +5,7 @@ import ImagePicker from 'react-native-image-picker'
 
 import { Button, InputBox } from 'reactMarvel/src/widgets'
 import { CharacterNewStyle } from 'reactMarvel/src/styles'
+import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
 
 class CharacterNew extends Component {
 
@@ -40,7 +41,7 @@ class CharacterNew extends Component {
                 nombre: this.state.name,
                 image: this.state.image ? 'data:image/jpeg; base 64,' +this.state.image.data : null,
             }
-            this.props.postCharacter(characterData)
+            this.props.updateMyCharactersList(characterData)
         }
     }
 
@@ -119,9 +120,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return{
-        
-
+        updateMyCharactersList: (character) => {
+            dispatch(CharactersActions.updateMyCharactersList(character))
+        }
     }
 }
 
-export default connect(null, null)(CharacterNew)
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterNew)

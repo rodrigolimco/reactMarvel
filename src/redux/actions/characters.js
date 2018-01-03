@@ -11,6 +11,13 @@ function updateCharactersList(list) {
     }
 }
 
+function updateMyCreatedList(list) { 
+    return {
+        type: types.CHARACTERS_UPDATE_MYLIST,
+        myList: list,
+    }
+}
+
 
 function setCharactersFetching(value) {
     return {
@@ -28,9 +35,13 @@ export function updateCharacterSelected(character) {
 }
 
 export function updateMyCharactersList(character){
-    return {
-        type: types.CHARACTERS_UPDATE_MYLIST,
-        character
+    return (dispatch, getState) => {
+
+        const state = getState()
+        const myList = state.characters.myList
+
+        const newList = [...myList, ...character]
+        dispatch(updateMyCreatedList(newList))
     }
 }
 
