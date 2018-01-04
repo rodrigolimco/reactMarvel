@@ -42,7 +42,7 @@ class CharactersMyList extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        myList        : state.characters.myList,
+        myList      : state.characters.myList,
         character   : state.characters.character,
         isFetching  : state.characters.isFetching,
     }

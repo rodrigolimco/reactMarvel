@@ -19,7 +19,7 @@ class CharactersList extends Component {
     }
 
     componentWillMount(){
-        this.props.initCharacterList()
+        //this.props.initCharacterList()
     }
 
     onSelect(item){

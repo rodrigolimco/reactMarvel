@@ -2,10 +2,16 @@ import React, { Component } from 'react'
 import { TouchableOpacity, Text, Image, StyleSheet, Dimensions, View } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import CharactersList from 'reactMarvel/src/sections/characters/CharactersList'
+import { connect } from 'react-redux'
+import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
 
 
-export default class EndpointsList extends Component {
+class EndpointsList extends Component {
 
+    componentWillMount(){
+        this.props.initCharacterList()
+    }
+    
     render(){
         return(
             
@@ -19,7 +25,7 @@ export default class EndpointsList extends Component {
                             <Text>{ 'Characters' }</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.smallContainer}>
+                    <TouchableOpacity style={styles.smallContainer} onPress={ () => Actions.CharactersMyList()}>
                             <Image  style={styles.image} 
                                     source={require('reactMarvel/src/images/mycharacters.jpg')} 
                                     resizeMode={'cover'}/>
@@ -49,6 +55,26 @@ export default class EndpointsList extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    
+    return{
+        list    : state.characters.list,
+        myList  : state.characters.myList
+    }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+    
+    return{
+        initCharacterList: () => {
+            dispatch(CharactersActions.initCharacterList())
+        },
+    }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EndpointsList)
 
 const styles = StyleSheet.create({
     

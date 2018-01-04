@@ -7,6 +7,7 @@ import { AppStyle } from 'reactMarvel/src/styles'
 // ----- Components ----- //
 import EndpointsList from './sections/endpoints/EndpointsList'
 import CharactersList from './sections/characters/CharactersList'
+import CharactersMyList from './sections/characters/CharactersMyList'
 import CharacterView from './sections/characters/CharacterView'
 import CharacterNew from './sections/characters/CharacterNew'
 
@@ -58,7 +59,13 @@ export default class App extends Component {
                         <Scene
                             key={'CharactersList'}
                             component={CharactersList}
-                            title={'ReactMarvel'}
+                            title={'Marvel Characters'}
+                        />
+
+                        <Scene
+                            key={'CharactersMyList'}
+                            component={CharactersMyList}
+                            title={'My Characters'}
                             renderRightButton={() => this.renderAddCharacterButton()}
                         />
 
