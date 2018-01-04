@@ -4,6 +4,8 @@ import * as webservices from 'reactMarvel/src/webservices/webservices'
 import * as constants from 'reactMarvel/src/webservices/constants'
 import { Actions } from 'react-native-router-flux';
 
+import CharacterCell from './CharacterCell'
+
 import { connect } from 'react-redux'
 import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
 
@@ -32,15 +34,7 @@ class CharactersList extends Component {
     }
 
     printCharacter(item, index){
-        const image = item && item.thumbnail ? { uri: item.thumbnail.path + '/landscape_amazing.jpg' } : null
-        return (
-            <TouchableOpacity onPress={ () => this.onSelect(item) }>
-                <View style={{height: 200,  marginVertical: 10}}>
-                    <Image source={image} style={styles.image} resizeMode={'contain'} />
-                    <Text>{ item.name }</Text>
-                </View>
-            </TouchableOpacity>
-        )
+        return <CharacterCell item={item} onSelect={ (character) => this.onSelect(character) } />
     }
 
     render(){
