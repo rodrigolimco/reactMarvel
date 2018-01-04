@@ -10,27 +10,15 @@ import { connect } from 'react-redux'
 import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
 
 
-class CharactersList extends Component {
+class CharactersMyList extends Component {
 
     constructor(props){
         super(props)
         this.printCharacter = this.printCharacter.bind(this)
-        this.onEndReached = this.onEndReached.bind(this)
-    }
-
-    componentWillMount(){
-        this.props.initCharacterList()
     }
 
     onSelect(item){
         this.props.updateCharacterSelected(item)
-    }
-
-    onEndReached(){
-        if(this.props.list.length < this.props.total && !this.props.isFetching) {
-            let newOffset = this.props.offset + 20
-            this.props.fetchCharactersList(newOffset)
-        }
     }
 
     printCharacter(item, index){
@@ -41,9 +29,8 @@ class CharactersList extends Component {
         return(
             <View style={styles.container}>
                 <FlatList
-                    data            ={ this.props.list }
+                    data            ={ this.props.myList }
                     renderItem      ={ ({ item, index }) => this.printCharacter(item, index)}
-                    onEndReached    ={() => this.onEndReached()}
                     keyExtractor    ={ (item, index) => item.id}
                     extraData       ={ this.props }
                 />
@@ -55,25 +42,14 @@ class CharactersList extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        list        : state.characters.list,
+        myList        : state.characters.myList,
         character   : state.characters.character,
-        total       : state.characters.total,
         isFetching  : state.characters.isFetching,
-        offset      : state.characters.offset
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return{
-
-        initCharacterList: () => {
-            dispatch(CharactersActions.initCharacterList())
-        },
-
-        fetchCharactersList: (offset) => {
-            dispatch(CharactersActions.updateCharactersListOffset(offset))
-            dispatch(CharactersActions.fetchCharactersList())
-        },
         
         updateCharacterSelected: (character) => {
             dispatch(CharactersActions.updateCharacterSelected(character))
@@ -82,7 +58,7 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CharactersList)
+export default connect(mapStateToProps, mapDispatchToProps)(CharactersMyList)
 
 const styles = StyleSheet.create({
 
