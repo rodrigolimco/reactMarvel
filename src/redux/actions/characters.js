@@ -63,6 +63,7 @@ export function updateMyCharactersList(character){
         const myList = state.characters.myList
 
         const newList = [...myList, character]
+        console.log("UPDATEMYCHARACTERSLIST ACTION: ", newList)
         dispatch(updateMyCreatedList(newList))
     }
 }

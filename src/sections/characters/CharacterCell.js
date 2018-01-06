@@ -13,7 +13,7 @@ export default class CharacterCell extends Component {
         const { item, onSelect } = this.props 
 
         const name = item.name ? item.name : ''
-        const image = item && item.thumbnail ? { uri: item.thumbnail.path + '/landscape_amazing.jpg' } : null
+        const image = item && item.thumbnail ? { uri: item.thumbnail.path + '/landscape_amazing.jpg' } : { uri: item.image }
 
         return (
             <TouchableOpacity onPress={ () => onSelect(item) }>

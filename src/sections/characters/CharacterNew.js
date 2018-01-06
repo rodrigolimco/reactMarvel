@@ -47,16 +47,17 @@ class CharacterNew extends Component {
         if( this.validateForm() ){
             const character = {
                 name: this.state.name,
-                image: this.state.image ? 'data:image/jpeg; base 64,' +this.state.image.data : null,
+                image: this.state.image ? 'data:image/jpeg; base64,' +  this.state.image.data : null,
             }
 
             this.props.updateMyCharactersList(character)
+            console.log("CHARACTER CORIO: ", character)
         }
     }
 
     onSelectImage(){
         var options = {
-            title: 'Select Avatar',
+            title: 'Select character image',
             storageOptions: {
               skipBackup: true,
               path: 'images'
@@ -78,6 +79,7 @@ class CharacterNew extends Component {
             else {          
               this.setState({
                 image: response
+                
               });
             }
           });
@@ -125,7 +127,8 @@ class CharacterNew extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        isFetching: state.characters.isFetching
+        isFetching: state.characters.isFetching,
+        myList: state.characters.myList
     }
 }
 

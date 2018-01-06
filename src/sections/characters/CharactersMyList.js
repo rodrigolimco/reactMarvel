@@ -17,12 +17,15 @@ class CharactersMyList extends Component {
         this.printCharacter = this.printCharacter.bind(this)
     }
 
+    componentWillMount(){
+    }
+
     onSelect(item){
         this.props.updateCharacterSelected(item)
     }
 
     printCharacter(item, index){
-        return <CharacterCell item={item} onSelect={ (character) => this.onSelect(character) } />
+        return <CharacterCell item={item} onSelect={ (character) => this.onSelect(character) } key={item.id}/>
     }
 
     render(){

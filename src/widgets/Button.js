@@ -7,7 +7,7 @@ export default class Button extends Component{
     static defaultProps = {
         spinnerColor: 'white',
         label: '',
-        isPFetching: false,
+        isFetching: false,
         onPress: () => {},
     }
 

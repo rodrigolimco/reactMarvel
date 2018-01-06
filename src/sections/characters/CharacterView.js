@@ -9,16 +9,18 @@ class CharacterView extends Component{
         const { character }  = this.props
         const image = character && character.thumbnail ? { uri: character.thumbnail.path + '/landscape_xlarge.jpg' } : null
         const description = character && character.description ? character.description : 'No description available'
+        const comics = character && character.comics.available ? character.comics.available : 'No info available'
+        const series = character && character.series.available ? character.series.available : 'No info available'
 
         return(
             <View>
 
                 <Image source={image} style={styles.image} resizeMode={'contain'} />
                 <View>
-                    <Text>{ 'Comics: ' + character.comics.available }</Text>
+                    <Text>{ 'Comics: ' + comics }</Text>
                     
 
-                    <Text>{ 'Series: ' + character.series.available }</Text>
+                    <Text>{ 'Series: ' + series }</Text>
                     
                 </View>
                 <Text>{ description }</Text>
