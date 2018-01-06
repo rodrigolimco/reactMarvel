@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native'
+import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import ImagePicker from 'react-native-image-picker'
 import { Actions } from 'react-native-router-flux';
@@ -90,18 +90,18 @@ class CharacterNew extends Component {
         const imageButtonText = this.state.image ? this.state.image.fileName : 'Choose image'
 
         return(
-            <View style={styles.container}>
+            <View style={CharacterNewStyle.container}>
 
-                <View style={styles.imageContainer}>
-                    <Image source={imageUri} style={styles.imageContainerBackground} resizeMode={'cover'}/>
-                    <TouchableOpacity style={styles.button} onPress={ () => this.onSelectImage() }>
-                        <Text style={styles.textButton}>{ imageButtonText }</Text>
+                <View style={CharacterNewStyle.imageContainer}>
+                    <Image source={imageUri} style={CharacterNewStyle.imageContainerBackground} resizeMode={'cover'}/>
+                    <TouchableOpacity style={CharacterNewStyle.button} onPress={ () => this.onSelectImage() }>
+                        <Text style={CharacterNewStyle.textButton}>{ imageButtonText }</Text>
                     </TouchableOpacity>
                 </View>
 
-                {this.state.imageError ? <Text style={styles.error}>{this.state.imageError}</Text> : null}
+                {this.state.imageError ? <Text style={CharacterNewStyle.error}>{this.state.imageError}</Text> : null}
 
-                <View style={styles.inputContainer}>
+                <View style={CharacterNewStyle.inputContainer}>
                     <InputBox
                         onChangeText   = { (v) => this.setState({ name : v }) }
                         value           = { this.state.name }
@@ -111,7 +111,7 @@ class CharacterNew extends Component {
                     />
                 </View>
 
-                <View style={styles.buttonContainer}>
+                <View style={CharacterNewStyle.buttonContainer}>
                     <Button
                         label = { 'Save character' }
                         onPress = { () => this.onSubmit() }
@@ -141,53 +141,3 @@ const mapDispatchToProps = (dispatch, props) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharacterNew)
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'rgb(222,53,46)',
-    },
-
-    error: {
-        color: 'rgb(247,247,247)',
-        textAlign: 'center',
-        marginTop: 4,
-        //marginRight: 10,
-    },
-
-    imageContainer: {
-        alignItems: 'center',
-        width: '100%',
-        height: 200,
-        backgroundColor: 'transparent',
-        justifyContent: 'center',
-    },
-
-    imageContainerBackground: {
-        position: 'absolute',
-        top: 0, 
-        bottom: 0,
-        left: 0, 
-        right: 0
-    },
-
-    button: {
-        padding: 10,
-        borderColor: 'rgb(247,247,247)',
-        borderWidth: 1, 
-        borderRadius: 6
-    },
-
-    textButton: {
-        color: 'rgb(247,247,247)',
-        fontWeight: '600',
-    },
-
-    inputContainer: {
-        margin: 20,
-    },
-
-    buttonContainer: {
-        margin: 20,
-    },
-})

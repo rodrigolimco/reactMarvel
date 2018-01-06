@@ -65,6 +65,7 @@ export default class App extends Component {
                             title={'Marvel Characters'}
                             titleStyle={AppStyle.titleStyle}
                             navigationBarStyle={AppStyle.navBar}
+                            navBarButtonColor={ 'rgb(247,247,247)' }
                         />
 
                         <Scene
@@ -74,6 +75,7 @@ export default class App extends Component {
                             titleStyle={AppStyle.titleStyle}
                             navigationBarStyle={AppStyle.navBar}
                             renderRightButton={() => this.renderAddCharacterButton()}
+                            navBarButtonColor={ 'rgb(247,247,247)' }
                         />
 
                         <Scene
@@ -81,6 +83,7 @@ export default class App extends Component {
                             component={CharacterView}
                             titleStyle={AppStyle.titleStyle}
                             navigationBarStyle={AppStyle.navBar}
+                            navBarButtonColor={ 'rgb(247,247,247)' }
                         />
 
                         <Scene
@@ -89,8 +92,8 @@ export default class App extends Component {
                             title={'Add new character'}
                             titleStyle={AppStyle.titleStyle}
                             backButtonTintColor={'rgb(247,247,247)'}
-                            //backButtonTextStyle={AppStyle.backButtonTextColor}
                             navigationBarStyle={AppStyle.navBar}
+                            navBarButtonColor={ 'rgb(247,247,247)' }
                         />
 
                     </Scene>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, StyleSheet } from 'react-native'
+import { Text, View, TextInput } from 'react-native'
 import { InputBoxStyle } from 'reactMarvel/src/styles'
 
 export default class InputBox extends Component {

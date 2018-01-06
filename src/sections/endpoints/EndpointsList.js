@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { TouchableOpacity, Text, Image, StyleSheet, Dimensions, View } from 'react-native'
-import { Actions } from 'react-native-router-flux';
-import CharactersList from 'reactMarvel/src/sections/characters/CharactersList'
+import { TouchableOpacity, Text, Image, View } from 'react-native'
+import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
-import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
 import Spinner from 'react-native-spinkit'
+
+import CharactersList from 'reactMarvel/src/sections/characters/CharactersList'
+import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
 import { EndpointsStyle } from 'reactMarvel/src/styles'
 
 
@@ -63,7 +64,7 @@ class EndpointsList extends Component {
 
 
                 <View style={EndpointsStyle.spinner}>
-                    <Spinner  size={100} type={'Bounce'} color={'rgb(247,247,247)'} isVisible={this.props.isFetching} />
+                    <Spinner  size={150} type={'Bounce'} color={'rgb(204,217,227)'} isVisible={this.props.isFetching} />
                 </View>
 
                 

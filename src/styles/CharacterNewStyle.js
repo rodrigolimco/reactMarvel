@@ -3,7 +3,14 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'rgb(245,245,245)',
+        backgroundColor: 'rgb(222,53,46)',
+    },
+
+    error: {
+        color: 'rgb(247,247,247)',
+        textAlign: 'center',
+        marginTop: 4,
+        //marginRight: 10,
     },
 
     imageContainer: {
@@ -11,7 +18,7 @@ export default StyleSheet.create({
         width: '100%',
         height: 200,
         backgroundColor: 'transparent',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     imageContainerBackground: {

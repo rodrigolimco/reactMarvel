@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Image, Text, StyleSheet } from 'react-native'
+import { View, TouchableOpacity, Image, Text } from 'react-native'
 import { CharacterCellStyle } from 'reactMarvel/src/styles'
 
 export default class CharacterCell extends Component {

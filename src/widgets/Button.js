@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TouchableOpacity, Text, ActivityIndicator, StyleSheet } from 'react-native'
+import { TouchableOpacity, Text, ActivityIndicator } from 'react-native'
 import { ButtonStyle } from 'reactMarvel/src/styles'
 
 export default class Button extends Component{
