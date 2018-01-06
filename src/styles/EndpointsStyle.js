@@ -3,7 +3,7 @@ import { StyleSheet, Dimensions } from 'react-native'
 export default StyleSheet.create({
 
     textStyle: {
-        color: 'white',
+        color: 'rgb(247,247,247)',
         textAlign: 'center',
         fontSize: 20 ,
         fontWeight: '500', 

@@ -14,48 +14,19 @@ export default class InputBox extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.label}> {this.props.label} </Text>
+            <View style={InputBoxStyle.container}>
+                <Text style={InputBoxStyle.label}> {this.props.label} </Text>
                 <TextInput
                     value={this.props.value}
                     onChangeText={(v) => this.props.onChangeText(v)}
                     placeholder={this.props.placeholder}
-                    placeholderTextColor={'grey'}
-                    style={styles.input}
+                    placeholderTextColor={'rgb(247,247,247)'}
+                    style={InputBoxStyle.input}
                     underlineColorAndroid={'transparent'}
                 />
 
-                {this.props.error ? <Text style={styles.error}>{this.props.error}</Text> : null}
+                {this.props.error ? <Text style={InputBoxStyle.error}>{this.props.error}</Text> : null}
             </View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-
-    container: {
-
-    },
-
-    error: {
-        color: 'white',
-        textAlign: 'right',
-        marginTop: 4,
-    },
-
-    input: {
-        borderColor: 'grey',
-        borderWidth: 1,
-        padding: 10,
-        borderRadius: 6,
-        fontSize: 16,
-        color: 'white',
-    },
-
-    label: {
-        color: 'white',
-        fontSize: 16,
-        marginBottom: 10,
-        fontWeight: '600',
-    },
-})

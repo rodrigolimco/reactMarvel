@@ -18,10 +18,6 @@ class CharactersList extends Component {
         this.onEndReached = this.onEndReached.bind(this)
     }
 
-    componentWillMount(){
-        //this.props.initCharacterList()
-    }
-
     onSelect(character){
         this.props.updateCharacterSelected(character)
     }

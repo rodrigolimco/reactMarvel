@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-export const styles = StyleSheet.create({
+export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'rgb(245,245,245)',
@@ -24,13 +24,13 @@ export const styles = StyleSheet.create({
 
     button: {
         padding: 10,
-        borderColor: 'white',
+        borderColor: 'rgb(247,247,247)',
         borderWidth: 1, 
         borderRadius: 6
     },
 
     textButton: {
-        color: 'white',
+        color: 'rgb(247,247,247)',
         fontWeight: '600',
     },
 

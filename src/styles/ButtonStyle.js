@@ -1,18 +1,18 @@
 import { StyleSheet } from 'react-native'
 
-export const styles = StyleSheet.create({
+export default StyleSheet.create({
 
     container: {
         justifyContent: 'center',
         alignItems: 'center',
         padding: 10,
-        backgroundColor: 'grey',
+        backgroundColor: 'rgb(227,120,115)',
         borderRadius: 4,
         flexDirection: 'row',
     },
 
     label: {
-        color: 'white',
+        color: 'rgb(247,247,247)',
         fontWeight: '600',
         fontSize: 16,
     },

@@ -63,7 +63,7 @@ class EndpointsList extends Component {
 
 
                 <View style={EndpointsStyle.spinner}>
-                    <Spinner  size={100} type={'Bounce'} color={'white'} isVisible={this.props.isFetching} />
+                    <Spinner  size={100} type={'Bounce'} color={'rgb(247,247,247)'} isVisible={this.props.isFetching} />
                 </View>
 
                 

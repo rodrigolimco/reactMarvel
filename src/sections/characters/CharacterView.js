@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Image, Text, Dimensions } from 'react-native'
 import { connect } from 'react-redux'
 
+import { CharacterViewStyle } from 'reactMarvel/src/styles'
+
 class CharacterView extends Component{
 
     render(){
@@ -13,16 +15,29 @@ class CharacterView extends Component{
         const description = character && character.description ? character.description : 'No description available'
 
         return(
-            <View>
+            <View style={CharacterViewStyle.container}>
 
-                <Image source={image} style={styles.image} resizeMode={'contain'} />
-                <View>
-                    <Text>{ 'Comics: ' + comics }</Text>
+                <Image source={image} style={CharacterViewStyle.image} resizeMode={'cover'} />
+                
+                <View style={{flexDirection:'row'}}>
+                    <View style={CharacterViewStyle.textContainer}>
+                        <Text style={CharacterViewStyle.textStyle}>{ 'Series: ' + series }</Text>
+                    </View>
 
-                    <Text>{ 'Series: ' + series }</Text>
-                    
+                    <View style={CharacterViewStyle.textContainer}>
+                        <Text style={CharacterViewStyle.textStyle}>{ 'Comics: ' + comics }</Text>
+                    </View>
                 </View>
-                <Text>{ description }</Text>
+
+                <View>
+                    <View style={CharacterViewStyle.descriptionContainer}>
+                        <Text style={CharacterViewStyle.textStyle}>{ 'Description: ' }</Text>
+                    </View>
+
+                    <View style={CharacterViewStyle.description}>
+                        <Text style={CharacterViewStyle.textStyle}>{ description }</Text>
+                    </View>
+                </View>
         
 
             </View>
@@ -42,10 +57,3 @@ const mapDispatchToProps = (dispatch, props) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharacterView)
-
-const styles = StyleSheet.create({
-    image: {
-        width: Dimensions.get('window').width,
-        height: 200,
-    },
-});

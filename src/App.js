@@ -36,8 +36,8 @@ export default class App extends Component {
 
     renderAddCharacterButton() {
         return (
-            <TouchableOpacity style={styles.addButton} onPress={() => Actions.CharacterNew()}>
-                <Text style={styles.addButtonText}>{'Add'}</Text>
+            <TouchableOpacity style={AppStyle.addButton} onPress={() => Actions.CharacterNew()}>
+                <Text style={AppStyle.addButtonText}>{'Add'}</Text>
             </TouchableOpacity>
         )
     }
@@ -54,8 +54,8 @@ export default class App extends Component {
                             key={'EndpointsList'}
                             component={EndpointsList}
                             title={'ReactMarvel'}
-                            titleStyle={styles.titleStyle}
-                            navigationBarStyle={styles.navBar}
+                            titleStyle={AppStyle.titleStyle}
+                            navigationBarStyle={AppStyle.navBar}
 
                         />
 
@@ -63,34 +63,34 @@ export default class App extends Component {
                             key={'CharactersList'}
                             component={CharactersList}
                             title={'Marvel Characters'}
-                            titleStyle={styles.titleStyle}
-                            navigationBarStyle={styles.navBar}
+                            titleStyle={AppStyle.titleStyle}
+                            navigationBarStyle={AppStyle.navBar}
                         />
 
                         <Scene
                             key={'CharactersMyList'}
                             component={CharactersMyList}
                             title={'My Characters'}
-                            titleStyle={styles.titleStyle}
-                            navigationBarStyle={styles.navBar}
+                            titleStyle={AppStyle.titleStyle}
+                            navigationBarStyle={AppStyle.navBar}
                             renderRightButton={() => this.renderAddCharacterButton()}
                         />
 
                         <Scene
                             key={'CharacterView'}
                             component={CharacterView}
-                            titleStyle={styles.titleStyle}
-                            navigationBarStyle={styles.navBar}
+                            titleStyle={AppStyle.titleStyle}
+                            navigationBarStyle={AppStyle.navBar}
                         />
 
                         <Scene
                             key={'CharacterNew'}
                             component={CharacterNew}
                             title={'Add new character'}
-                            titleStyle={styles.titleStyle}
-                            backButtonTintColor={'white'}
-                            //backButtonTextStyle={styles.backButtonTextColor}
-                            navigationBarStyle={styles.navBar}
+                            titleStyle={AppStyle.titleStyle}
+                            backButtonTintColor={'rgb(247,247,247)'}
+                            //backButtonTextStyle={AppStyle.backButtonTextColor}
+                            navigationBarStyle={AppStyle.navBar}
                         />
 
                     </Scene>
@@ -100,31 +100,3 @@ export default class App extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    navBar: {
-        backgroundColor: 'rgb(222,53,46)',
-    },
-
-    titleStyle:{
-        color: 'white',
-        fontWeight: '700', 
-        fontSize: 20
-    },
-
-    addButtonText: {
-        color: 'white',
-        fontSize: 16,
-        fontWeight: '600'
-
-    },
-
-    addButton: {
-        padding: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-
-    backButtonTextColor: {
-        color: 'rgb(255,255,255)'
-    }
-});

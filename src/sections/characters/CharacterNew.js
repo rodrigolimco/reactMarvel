@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native'
 import { connect } from 'react-redux'
 import ImagePicker from 'react-native-image-picker'
 import { Actions } from 'react-native-router-flux';
@@ -26,12 +26,12 @@ class CharacterNew extends Component {
         let errors = {}
 
         if(!this.state.name) {
-            errors.name = "Please introduce character's name"
+            errors.name = "*Please introduce character's name*"
             valid = false
         }
 
         if(this.state.image == null){
-            errors.image = "Please choose an image"
+            errors.image = "*Please choose an image*"
             valid = false
         }
 
@@ -113,7 +113,7 @@ class CharacterNew extends Component {
 
                 <View style={styles.buttonContainer}>
                     <Button
-                        label = { 'Save' }
+                        label = { 'Save character' }
                         onPress = { () => this.onSubmit() }
                         isFetching = { this.props.isFetching }
                     />
@@ -145,13 +145,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(CharacterNew)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'rgb(245,245,245)',
+        backgroundColor: 'rgb(222,53,46)',
     },
 
     error: {
-        color: 'white',
-        textAlign: 'right',
+        color: 'rgb(247,247,247)',
+        textAlign: 'center',
         marginTop: 4,
+        //marginRight: 10,
     },
 
     imageContainer: {
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 200,
         backgroundColor: 'transparent',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     imageContainerBackground: {
@@ -172,13 +173,13 @@ const styles = StyleSheet.create({
 
     button: {
         padding: 10,
-        borderColor: 'white',
+        borderColor: 'rgb(247,247,247)',
         borderWidth: 1, 
         borderRadius: 6
     },
 
     textButton: {
-        color: 'white',
+        color: 'rgb(247,247,247)',
         fontWeight: '600',
     },
 
