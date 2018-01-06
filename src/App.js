@@ -106,7 +106,9 @@ const styles = StyleSheet.create({
     },
 
     titleStyle:{
-        color: 'white'
+        color: 'white',
+        fontWeight: '700', 
+        fontSize: 20
     },
 
     addButtonText: {

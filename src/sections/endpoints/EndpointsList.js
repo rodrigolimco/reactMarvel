@@ -98,12 +98,12 @@ const styles = StyleSheet.create({
         fontSize: 20 ,
         fontWeight: '500', 
         padding: 10,
+        paddingHorizontal: 5
     },
 
     textContainer: {
         position: 'absolute',
-        padding: 10,
-        //bottom: 0,
+        padding: 1,
         right: 0,
         left: 0,
         top: (Dimensions.get('window').height / 2 - 50) / 2-30,
@@ -129,8 +129,6 @@ const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
         backgroundColor: 'rgb(222,53,46)',
-        //paddingBottom: 20,
-        //paddingTop: 10
     },
 
     smallContainer: {
