@@ -22,8 +22,8 @@ class CharactersList extends Component {
         //this.props.initCharacterList()
     }
 
-    onSelect(item){
-        this.props.updateCharacterSelected(item)
+    onSelect(character){
+        this.props.updateCharacterSelected(character)
     }
 
     onEndReached(){

@@ -20,8 +20,8 @@ class CharactersMyList extends Component {
     componentWillMount(){
     }
 
-    onSelect(item){
-        this.props.updateCharacterSelected(item)
+    onSelect(character){
+        this.props.updateCharacterSelected(character)
     }
 
     printCharacter(item, index){
@@ -34,7 +34,7 @@ class CharactersMyList extends Component {
                 <FlatList
                     data            ={ this.props.myList }
                     renderItem      ={ ({ item, index }) => this.printCharacter(item, index)}
-                    keyExtractor    ={ (item, index) => item.id}
+                    keyExtractor    ={ (item, index) => index}
                     extraData       ={ this.props }
                 />
             </View>

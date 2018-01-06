@@ -8,8 +8,10 @@ class CharacterView extends Component{
 
         const { character }  = this.props
         const image = character && character.thumbnail ? { uri: character.thumbnail.path + '/landscape_xlarge.jpg' } : { uri: character.image }
-        const comics = character && character.comics.available ? character.comics.available : 'No info available'
-        const series = character && character.series.available ? character.series.available : 'No info available'
+        //const comics = character && character.comics.available ? character.comics.available : 'No info available'
+        //const series = character && character.series.available ? character.series.available : 'No info available'
+        const comics = character && character.comics ? character.comics.available : 'No info available'
+        const series = character && character.series ? character.series.available : 'No info available'
         const description = character && character.description ? character.description : 'No description available'
 
         console.log("CHARACTER RODRIGO: ", this.props.character)
