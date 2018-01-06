@@ -12,6 +12,8 @@ class CharacterView extends Component{
         const series = character && character.series.available ? character.series.available : 'No info available'
         const description = character && character.description ? character.description : 'No description available'
 
+        console.log("CHARACTER RODRIGO: ", this.props.character)
+
         return(
             <View>
 
@@ -38,15 +40,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return{
-
-        /*fetchCharactersList: () => {
-            dispatch(CharactersActions.fetchCharactersList())
-        },
-
-        updateCharacterSelected: (character) => {
-            dispatch(CharactersActions.updateCharacterSelected(character))
-            Actions.CharacterView({ title: character.name })
-        },*/
     }
 }
 

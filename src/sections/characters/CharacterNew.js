@@ -51,7 +51,6 @@ class CharacterNew extends Component {
             }
 
             this.props.updateMyCharactersList(character)
-            console.log("CHARACTER CORIO: ", character)
         }
     }
 

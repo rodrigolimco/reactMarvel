@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import CharactersList from 'reactMarvel/src/sections/characters/CharactersList'
 import { connect } from 'react-redux'
 import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
+import Spinner from 'react-native-spinkit'
 
 
 class EndpointsList extends Component {
@@ -16,7 +17,11 @@ class EndpointsList extends Component {
         return(
             
             <View style={styles.mainContainer}>
-                
+
+                <View style={styles.spinner}>
+                <Spinner /*style={styles.spinner}*/ size={60} type={'Bounce'} color={'red'} isVisible={this.props.isFetching}/>
+                </View>
+
                 <View style={{flex: 1, flexDirection: 'row'}}>
                     <TouchableOpacity style={styles.smallContainer} onPress={ () => Actions.CharactersList()}>
                             <Image  style={styles.image} 
@@ -59,8 +64,7 @@ class EndpointsList extends Component {
 const mapStateToProps = (state) => {
     
     return{
-        list    : state.characters.list,
-        myList  : state.characters.myList
+        isFetching : state.characters.isFetching
     }
 }
 
@@ -110,6 +114,16 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         left: 0
-    }
+    },
+
+    spinner: {
+        marginBottom: 50,
+        alignItems: 'center',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+      }
 })
 
