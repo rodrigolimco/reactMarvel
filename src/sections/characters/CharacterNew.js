@@ -47,7 +47,7 @@ class CharacterNew extends Component {
         if( this.validateForm() ){
             const character = {
                 name: this.state.name,
-                image: this.state.image ? 'data:image/jpeg; base64,' +  this.state.image.data : null,
+                image: this.state.image ? 'data:image/jpeg;base64,' +  this.state.image.data : null,
             }
 
             this.props.updateMyCharactersList(character)
