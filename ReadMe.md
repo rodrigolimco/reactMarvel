@@ -21,6 +21,7 @@ sobre la temática elegida.
 que será otra pantalla con la vista individual del elemento de la lista elegido.
 
 <br>
+
 ### Opcionales:
 
 - El uso de este spinner en los tiempos de carga, que tendremos que
@@ -30,7 +31,6 @@ enlazar MANUALMENTE con nuestros proyectos nativos:
 - Un formulario de añadir personaje (aunque no esté conectado contra un webservice).
 
 <br>
-
 
 ## Detalles implementación
 
