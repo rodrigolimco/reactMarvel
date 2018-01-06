@@ -31,7 +31,7 @@ class CharacterView extends Component{
 
                 <View>
                     <View style={CharacterViewStyle.descriptionContainer}>
-                        <Text style={CharacterViewStyle.textStyle}>{ 'Description: ' }</Text>
+                        <Text style={CharacterViewStyle.sectionTitle}>{ 'Description: ' }</Text>
                     </View>
 
                     <View style={CharacterViewStyle.description}>

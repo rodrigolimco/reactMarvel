@@ -14,7 +14,7 @@ export default StyleSheet.create({
 
     textStyle: {
         color: 'rgb(247,247,247)',
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: '600'
     },
 
@@ -32,4 +32,11 @@ export default StyleSheet.create({
         margin: 10,
         marginTop: 5
     },
+
+    sectionTitle: {
+        color: 'rgb(247,247,247)',
+        fontSize: 20,
+        fontWeight: '600'
+    }
 });
+
