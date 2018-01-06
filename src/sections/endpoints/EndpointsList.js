@@ -5,6 +5,7 @@ import CharactersList from 'reactMarvel/src/sections/characters/CharactersList'
 import { connect } from 'react-redux'
 import * as CharactersActions from 'reactMarvel/src/redux/actions/characters'
 import Spinner from 'react-native-spinkit'
+import { EndpointsStyle } from 'reactMarvel/src/styles'
 
 
 class EndpointsList extends Component {
@@ -17,11 +18,6 @@ class EndpointsList extends Component {
         return (
 
             <View style={styles.mainContainer}>
-
-
-                <View style={styles.spinner}>
-                    <Spinner /*style={styles.spinner}*/ size={60} type={'Bounce'} color={'white'} isVisible={this.props.isFetching} />
-                </View>
 
 
                 <View style={styles.smallContainer}>
@@ -64,6 +60,13 @@ class EndpointsList extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
+
+
+                <View style={styles.spinner}>
+                    <Spinner  size={100} type={'Bounce'} color={'white'} isVisible={this.props.isFetching} />
+                </View>
+
+                
 
             </View>
 
@@ -142,7 +145,8 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         alignItems: 'center',
         position: 'absolute',
-        top: 0,
+        top: Dimensions.get('window').height / 2 - 80,
+        //top: 0,
         right: 0,
         bottom: 0,
         left: 0
