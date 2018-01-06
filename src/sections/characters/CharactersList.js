@@ -88,13 +88,6 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        //backgroundColor: Colors.background,
-        paddingBottom: 20,
-        paddingTop: 60
-    },
-
-    image: {
-        width: Dimensions.get('window').width,
-        height: 200,
+        backgroundColor: 'rgb(222,53,46)',
     },
 });

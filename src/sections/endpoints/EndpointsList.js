@@ -9,50 +9,52 @@ import Spinner from 'react-native-spinkit'
 
 class EndpointsList extends Component {
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.initCharacterList()
     }
-    
-    render(){
-        return(
-            
+
+    render() {
+        return (
+
             <View style={styles.mainContainer}>
 
+
                 <View style={styles.spinner}>
-                <Spinner /*style={styles.spinner}*/ size={60} type={'Bounce'} color={'red'} isVisible={this.props.isFetching}/>
+                    <Spinner /*style={styles.spinner}*/ size={60} type={'Bounce'} color={'white'} isVisible={this.props.isFetching} />
                 </View>
 
-                <View style={{flex: 1, flexDirection: 'row'}}>
-                    <TouchableOpacity style={styles.smallContainer} onPress={ () => Actions.CharactersList()}>
-                            <Image  style={styles.image} 
-                                    source={require('reactMarvel/src/images/characters.jpg')} 
-                                    resizeMode={'cover'}/>
-                            <Text>{ 'Characters' }</Text>
+
+                <View style={styles.smallContainer}>
+                    <TouchableOpacity style={styles.sectionContainer} onPress={() => Actions.CharactersList()}>
+                        <Image style={styles.image}
+                            source={require('reactMarvel/src/images/characters.jpg')}
+                            resizeMode={'cover'} />
+                        <Text style={styles.textStyle}>{'Characters'}</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.smallContainer} onPress={ () => Actions.CharactersMyList()}>
-                            <Image  style={styles.image} 
-                                    source={require('reactMarvel/src/images/mycharacters.jpg')} 
-                                    resizeMode={'cover'}/>
-                            <Text>{ 'My Characters' }</Text>
+                    <TouchableOpacity style={styles.sectionContainer} onPress={() => Actions.CharactersMyList()}>
+                        <Image style={styles.image}
+                            source={require('reactMarvel/src/images/mycharacters.jpg')}
+                            resizeMode={'cover'} />
+                        <Text style={styles.textStyle}>{'My Characters'}</Text>
                     </TouchableOpacity>
-
                 </View>
 
-                <View style={{flex: 1, flexDirection: 'row'}}>
-                    <TouchableOpacity style={styles.smallContainer}>
-                            <Image  style={styles.image} 
-                                    source={require('reactMarvel/src/images/creators.png')} 
-                                    resizeMode={'cover'}/>
-                            <Text>{ 'Creators' }</Text>
+
+                <View style={styles.smallContainer}>
+                    <TouchableOpacity style={styles.sectionContainer}>
+                        <Image style={styles.image}
+                            source={require('reactMarvel/src/images/creators.png')}
+                            resizeMode={'cover'} />
+                        <Text style={styles.textStyle}>{'Creators'}</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.smallContainer}>
-                    <Image  style={styles.image} 
-                            source={require('reactMarvel/src/images/comics.jpg')} 
-                            resizeMode={'cover'}/>
-                    <Text>{ 'Comics' }</Text>
-            </TouchableOpacity>
+                    <TouchableOpacity style={styles.sectionContainer}>
+                        <Image style={styles.image}
+                            source={require('reactMarvel/src/images/comics.jpg')}
+                            resizeMode={'cover'} />
+                        <Text style={styles.textStyle}>{'Comics'}</Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>
@@ -62,15 +64,15 @@ class EndpointsList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    
-    return{
-        isFetching : state.characters.isFetching
+
+    return {
+        isFetching: state.characters.isFetching
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
-    
-    return{
+
+    return {
         initCharacterList: () => {
             dispatch(CharactersActions.initCharacterList())
         },
@@ -81,31 +83,21 @@ const mapDispatchToProps = (dispatch, props) => {
 export default connect(mapStateToProps, mapDispatchToProps)(EndpointsList)
 
 const styles = StyleSheet.create({
-    
-    smallContainer: {
-        margin: 10,
-        width: Dimensions.get('window').width / 2 -20,
-        height: Dimensions.get('window').height / 2 -20
 
-        /*...Platform.select({
-            ios: {
-              shadowColor: 'rgba(255,255,255,0.1)',
-              shadowOpacity: 1,
-              shadowOffset: { height: 4, width: 4 },
-              shadowRadius: 2,
-            },
-            android: {
-              elevation: 4,
-            },
-        })*/
-
+    textStyle: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 20 ,
+        fontWeight: '400', 
+        padding: 10,
+        backgroundColor: 'rgba(94,23,20,0.5)'
     },
 
-    mainContainer: {
-        flex: 1,
-        //backgroundColor: Colors.background,
-        paddingBottom: 20,
-        paddingTop: 60
+    sectionContainer: {
+        margin: 10,
+        width: Dimensions.get('window').width / 2 - 20,
+        height: Dimensions.get('window').height / 2 - 20,
+       
     },
 
     image: {
@@ -113,7 +105,23 @@ const styles = StyleSheet.create({
         top: 0,
         right: 0,
         bottom: 0,
-        left: 0
+        left: 0,
+        width: Dimensions.get('window').width / 2 - 20,
+        height: Dimensions.get('window').height / 2 - 20,
+    },
+
+    mainContainer: {
+        flex: 1,
+        backgroundColor: 'rgb(222,53,46)',
+        //paddingBottom: 20,
+        //paddingTop: 10
+    },
+
+    smallContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        paddingBottom: 20,
+        marginBottom: 10
     },
 
     spinner: {
@@ -124,6 +132,6 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         left: 0
-      }
+    }
 })
 

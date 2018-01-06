@@ -16,7 +16,7 @@ export default class CharacterCell extends Component {
         const image = item && item.thumbnail ? { uri: item.thumbnail.path + '/landscape_amazing.jpg' } : { uri: item.image }
 
         return (
-            <TouchableOpacity onPress={ () => onSelect(item) }>
+            <TouchableOpacity style={styles.imageContainer} onPress={ () => onSelect(item) }>
 
                 <Image source={ image } resizeMode={'cover'} style={styles.image} />
                 <View style={styles.textContainer}>
@@ -29,6 +29,13 @@ export default class CharacterCell extends Component {
 }
 
 const styles = StyleSheet.create({
+
+    imageContainer: {
+        margin: 10,
+        borderColor: 'white',
+        borderWidth: 1,
+        alignContent: 'center'
+    },
     
     image: {
         width: '100%',
@@ -36,26 +43,19 @@ const styles = StyleSheet.create({
     },
 
     textContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 20,
+        padding: 10,
         position: 'absolute',
         bottom: 0,
         right: 0,
         left: 0,
-        backgroundColor: 'rgba(255,255,255,0.2)',
+        backgroundColor: 'rgba(128,128,128,0.8)',
     },
 
     name: {
         flex: 1,
+        textAlign: 'center',
         fontSize: 18,
         fontWeight: 'bold',
         color: 'white',
     },
-    age: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: 'white',
-        backgroundColor: 'transparent',
-    }
 })

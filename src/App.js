@@ -54,30 +54,43 @@ export default class App extends Component {
                             key={'EndpointsList'}
                             component={EndpointsList}
                             title={'ReactMarvel'}
+                            titleStyle={styles.titleStyle}
+                            navigationBarStyle={styles.navBar}
+
                         />
 
                         <Scene
                             key={'CharactersList'}
                             component={CharactersList}
                             title={'Marvel Characters'}
+                            titleStyle={styles.titleStyle}
+                            navigationBarStyle={styles.navBar}
                         />
 
                         <Scene
                             key={'CharactersMyList'}
                             component={CharactersMyList}
                             title={'My Characters'}
+                            titleStyle={styles.titleStyle}
+                            navigationBarStyle={styles.navBar}
                             renderRightButton={() => this.renderAddCharacterButton()}
                         />
 
                         <Scene
                             key={'CharacterView'}
                             component={CharacterView}
+                            titleStyle={styles.titleStyle}
+                            navigationBarStyle={styles.navBar}
                         />
 
                         <Scene
                             key={'CharacterNew'}
                             component={CharacterNew}
                             title={'Add new character'}
+                            titleStyle={styles.titleStyle}
+                            backButtonTintColor={'white'}
+                            //backButtonTextStyle={styles.backButtonTextColor}
+                            navigationBarStyle={styles.navBar}
                         />
 
                     </Scene>
@@ -89,11 +102,15 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
     navBar: {
-        backgroundColor: 'rgb(245,245,245)',
+        backgroundColor: 'rgb(222,53,46)',
+    },
+
+    titleStyle:{
+        color: 'white'
     },
 
     addButtonText: {
-        color: 'red',
+        color: 'white',
         fontSize: 16,
         fontWeight: '600'
 
@@ -103,5 +120,9 @@ const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+
+    backButtonTextColor: {
+        color: 'rgb(255,255,255)'
     }
 });
