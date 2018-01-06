@@ -43,12 +43,13 @@ const styles = StyleSheet.create({
     },
 
     textContainer: {
-        padding: 10,
         position: 'absolute',
-        bottom: 0,
+        padding: 10,
+        //bottom: 0,
         right: 0,
         left: 0,
-        backgroundColor: 'rgba(128,128,128,0.8)',
+        //top: 0,
+        backgroundColor: 'rgba(128,128,128,0.7)',
     },
 
     name: {
